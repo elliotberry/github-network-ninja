@@ -1,24 +1,23 @@
 // ==UserScript==
 // @name           GitHub Network Ninja
-// @version        2.0
-// @namespace      https://github.com/maliayas
-// @author         Ali Ayas <mali@maliayas.com>
+// @version        2.1
+// @author         Ali Ayas and Elliot
 // @description    Full-viewport graph with searchable commit list on "GitHub repo network" pages.
 // @license        MIT
 // @include        https://github.com/*/*/network
 // @icon           data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAB8hJR8iJiAiJiAjJyIkKCMlKSMmKSQmKiUnKyUoKyYoLCcqLSgqLSgrLiksLyosMCsuMCsuMSwuMCwuMS4wMy8xNC8xNTEyNjI1NzM1ODU4Oj0%2FQj5AQz9AREFCRUJDR0JER0dITEhJTElLTk9QU09RVFBRVFFSVVJUVlJUV1RWWFtcXltcX1xdYF1eYF5eYV5fYmFiZWNkZmRlZ2dpa2prbWprbmtsbmtsb2xucG5vcW9wc3JydXt7fnx8fnx9f3x%2Bf35%2BgH5%2FgYCAg4GChIKDhYOEhoaGiIaHiYeIioiJi4mKi4qLjY6OkI6PkZCQkpGRk5GSk5GSlJWVl5aWmJqanJycnp6dn5%2Ben56foKGhoqOjpKOjpaOkpaeoqaurrK2sra2trq2ur66vsLCwsba0tbW0tra2t7i4uby7vLy8vcHBwsTCw8TDxMXExcXFxsbGx8rKysvKy83MzM7Mzc3NztTS0tXV1dXV1tfW19jX19zb293c3N7d3t%2Fe39%2Ff4ODe3uLg4OLh4ePi4uTi4uXj4%2BXk5Obl5efm5ujl5ejm5unn5%2Bro6Ovp6evq6uzq6uzr6%2B3s7O7t7e%2Fu7u%2Fu7%2FDu7vHv7%2FHw8PLx8fLy8vPz8%2FTz8%2FX09PX19fb29vf39%2Fj39%2Fj4%2BPn5%2Bfr6%2Bvv7%2B%2Fz8%2FP39%2Ff7%2B%2Fv%2F%2F%2FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0HIHQAAAEAdFJOU%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4xLjFjKpxLAAACEElEQVQ4T4WQCXPSQBiGiyQVL4g3nvVurVLvq94K3lpq61lvUcFirfdttbWF2kQJVIUIQbLBxl%2B5ft8mDEnGGZ%2BZZHff99nsThrof7ALetX4Axi6bgVIXdCNiVfXTx883BH7YBh1pSYQI9u1fI7F6mvqb80qLEGvXl4000ZTYoKYjSmQb1sEF2HNNJhAci1WbKNdY6egUP61IRAQhICN2fCEq2VL0M%2FC8mghvg6GBUF4besvh2BI4CdAUN%2FP9fv9twmp9L5UCBl%2F%2FogQchyiJkVlgnYAFv6Y5uAEZlfgjAb6czw4A%2BiuONiNWXMFBSUxHVgslx28noXpgAKCemoa0KW62InpnQIIpR04TZZcnMe0swRCMTQVeFx0cRXTSBHvEJoC3FdcdGMawTsUtvuAcwUXezDtzIOQPzkZWPsj70BaiGlMBiETb0RufndwDDPfWxS%2BSvN5QLiRqyOfacRsTY796uw%2BXri1medbLzwRs8CnZMcyrHm%2BJ8ME6U2AW%2FFwL8dxwXco9PEwRZaIEhOoHOW4XQ9aOW6%2FzFhl9vw96JkwKrV5ff0veuNPM4xNXkY4UxPo2GCzd1402ffsC2Mj69ulNHZMoOnBrZOAIxKjDaZcRGS9JdAR8WLQ4wmLjPUez9K7YspsLIGmxI%2FRlZdM4VBLTyo9ahU1gdKhsTqfh63QLuBNRrAdHqrtRuzCP6D0L3BZI7iJ8A14AAAAAElFTkSuQmCC
-// @require        https://code.jquery.com/jquery-2.0.3.min.js
+
 // @run-at         document-end
 // ==/UserScript==
 
-var $canvasContainer = $(".js-network-graph-container");
+var canvasContainer = document.querySelectorAll(".js-network-graph-container");
 
 if ($canvasContainer.length) {
     // If there is a scrollbar, we should hide it in order to get the correct window width and height.
-    $("body").css({"overflow": "hidden"});
+    document.querySelectorAll("body").css({"overflow": "hidden"});
 
     // Make the container fixed to 0x0 point.
-    $canvasContainer.removeClass("position-relative").css({
+    $canvasContainer.classList.remove("position-relative").css({
         "position": "fixed",
         "left": 0,
         "right": 0,
@@ -28,14 +27,14 @@ if ($canvasContainer.length) {
         "background-color": "white"
     });
 
-    var $canvas = $canvasContainer.find("canvas");
+    var canvas = $canvasContainer.querySelectorAll("canvas");
 
-    var $win = $(window);
+    var win = $(window);
     var winWidth = $win.width();
     var winHeight = $win.height();
 
-    $canvas.attr("width", winWidth);
-    $canvas.attr("height", winHeight);
+    $canvas.setAttribute("width", winWidth);
+    $canvas.setAttribute("height", winHeight);
 }
 
 (function initCommitFilterBox() {
@@ -169,7 +168,7 @@ if ($canvasContainer.length) {
      */
     var networkMetaData;
 
-    $commitFilterButton = $(
+    commitFilterButton = $(
         "<button class='commit-filter-button btn btn-sm btn-primary'>"
             + "List of commits"
         + "</button>").appendTo("body");
@@ -185,10 +184,10 @@ if ($canvasContainer.length) {
             return;
         }
 
-        $commitFilterBoxMask = $("<div class='commit-filter-box-mask'></div>").appendTo("body");
+        commitFilterBoxMask = document.querySelectorAll("<div class='commit-filter-box-mask'></div>").appendTo("body");
         $commitFilterBoxMask.click(hideCommitFilterBox);
 
-        $commitFilterBox = $(
+        commitFilterBox = $(
             "<div class='commit-filter-box'>"
                 + "<input type='text' class='form-control input-block' />"
                 + "<div class='table-container'>"
@@ -203,11 +202,11 @@ if ($canvasContainer.length) {
 
         // Adjust height dynamically based on the viewport height. 44 is the total
         // height of the input box.
-        $commitFilterBox.find(".table-container").height($commitFilterBox.height() - 44);
+        $commitFilterBox.querySelectorAll(".table-container").height($commitFilterBox.height() - 44);
 
-        $commitFilterInput      = $commitFilterBox.find("input");
-        $commitFilterLoading    = $commitFilterBox.find(".loading");
-        $commitFilterTable      = $commitFilterBox.find("table");
+        commitFilterInput = $commitFilterBox.querySelectorAll("input");
+        commitFilterLoading = $commitFilterBox.querySelectorAll(".loading");
+        commitFilterTable = $commitFilterBox.querySelectorAll("table");
 
         bindFilterFunctionOnInput();
 
@@ -250,9 +249,9 @@ if ($canvasContainer.length) {
             window.clearTimeout(timeoutId);
 
             timeoutId = window.setTimeout(function () {
-                var query = $commitFilterInput.val().toLowerCase();
+                var query = $commitFilterInput.value.toLowerCase();
 
-                $commitFilterTable.find("tr").each(function () {
+                $commitFilterTable.querySelectorAll("tr").forEach(function () {
                     if (query === "" || this.getAttribute("search-text").includes(query)) {
                         this.removeAttribute("hidden");
 
@@ -313,25 +312,25 @@ if ($canvasContainer.length) {
         }).done(function (response) {
             numberOfTotalCommits += response.commits.length;
 
-            $commitFilterLoading.find(".number").text(numberOfTotalCommits)
+            $commitFilterLoading.querySelectorAll(".number").textContent(numberOfTotalCommits)
 
             // Template object.
-            var $tr = $("<tr><td class='author'></td><td class='message'></td><td class='date'></td></tr>");
+            var tr = document.querySelectorAll("<tr><td class='author'></td><td class='message'></td><td class='date'></td></tr>");
 
             for (var i = 0; i < response.commits.length; i++) {
-                var $newTr = $tr.clone();
+                var newTr = $tr.clone();
 
                 var commitUrl = "https://github.com/" + getUserRepoBySpace(response.commits[i]["space"]) + "/commit/" + response.commits[i]["id"];
-                var $commitLink = $("<a target='_blank'></a>").attr("href", commitUrl).text(response.commits[i]["message"]);
+                var commitLink = document.querySelectorAll("<a target='_blank'></a>").setAttribute("href", commitUrl).textContent(response.commits[i]["message"]);
 
                 // Check if the commit exists in the upstream repo.
                 if (getUserBySpace(response.commits[i]["space"]) != getUserBySpace(0)) {
-                    $newTr.addClass("non-merged");
+                    $newTr.classList.add("non-merged");
                 }
 
-                $newTr.find(".author")      .text(response.commits[i]["login"] || "(" + response.commits[i]["author"] + ")"); // "login" may be empty sometimes.
-                $newTr.find(".message")     .html($commitLink);
-                $newTr.find(".date")        .text(response.commits[i]["date"]);
+                $newTr.querySelectorAll(".author")      .textContent(response.commits[i]["login"] || "(" + response.commits[i]["author"] + ")"); // "login" may be empty sometimes.
+                $newTr.querySelectorAll(".message")     .html($commitLink);
+                $newTr.querySelectorAll(".date")        .textContent(response.commits[i]["date"]);
 
                 $commitFilterTable.prepend($newTr);
             }
@@ -359,7 +358,7 @@ if ($canvasContainer.length) {
                  */
                 buildSearchIndex();
 
-                $commitFilterInput.attr("placeholder", "Search in " + numberOfTotalCommits + " commits from " + networkMetaData.users.length + " repos...")
+                $commitFilterInput.setAttribute("placeholder", "Search in " + numberOfTotalCommits + " commits from " + networkMetaData.users.length + " repos...")
                 $commitFilterInput.focus();
 
             } else {
@@ -386,7 +385,7 @@ if ($canvasContainer.length) {
     }
 
     function buildSearchIndex() {
-        $commitFilterTable.find("tr").each(function () {
+        $commitFilterTable.querySelectorAll("tr").forEach(function () {
             this.setAttribute("search-text", this.innerText.toLowerCase().replace(/\s+/g, " "));
         });
     }
